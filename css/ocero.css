@@ -1,0 +1,35 @@
+table, td, th {
+  background-color:#22ac3c;
+  border-collapse: collapse;
+  border:2px solid #333;
+}
+td{
+  height: 50px;
+  width: 50px;
+  text-align:center
+}
+table{
+  border:solid 10px;
+}
+
+.blue{
+  background-color:#00F;
+}
+
+.black span{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #111;
+  }
+  
+.white span{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #EEE;
+  }
