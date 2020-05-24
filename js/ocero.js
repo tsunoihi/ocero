@@ -1,14 +1,14 @@
-$(document).ready(function(){
-	$('table').on('click', ".blue",function(){
-		var turn = $("#turn").attr("class");
-		var index_x = $(this).index();
-		var index_y = $(this).parent('tr').index();
+jQuery(document).ready(function(){
+	jQuery('table').on('click', ".blue",function(){
+		var turn = jQuery("#turn").attr("class");
+		var index_x = jQuery(this).index();
+		var index_y = jQuery(this).parent('tr').index();
 		var another_color = getAnotherColor(turn);
-		$('tr').eq(index_y).children('td').eq(index_x).addClass(turn,another_color);
+		jQuery('tr').eq(index_y).children('td').eq(index_x).addClass(turn,another_color);
 		change(index_x,index_y,turn,another_color);
 		//ターンの変更処理
-		$('#turn').removeClass();
-		$('#turn').addClass(another_color);
+		jQuery('#turn').removeClass();
+		jQuery('#turn').addClass(another_color);
 		check(another_color);
 	});
 	check('white');
@@ -24,10 +24,10 @@ function check(color){
 		another_color = "white";
 	}
 	//初期化
-	$('td').removeClass('blue');
-	$('td.' + another_color).each(function(){
-		var x = $(this).index();
-		var y = $(this).parent('tr').index();
+	jQuery('td').removeClass('blue');
+	jQuery('td.' + another_color).each(function(){
+		var x = jQuery(this).index();
+		var y = jQuery(this).parent('tr').index();
 		var array = [
 			{ x:-1,y:-1},
 			{ x:-1,y: 0},
@@ -42,13 +42,13 @@ function check(color){
 			if(y + value.y < 0 || y + value.y > 7 || x + value.x < 0 || x + value.x > 7){
 				return true;
 			}
-			point = $('tr').eq(y + value.y).children('td').eq(x + value.x);
+			point = jQuery('tr').eq(y + value.y).children('td').eq(x + value.x);
 			if(point.hasClass('white') == false && point.hasClass('black') == false && point.hasClass('blue') == false){
 				for (var i=1; i<7; i++) {
 					if(y - value.y*i < 0 || y - value.y*i > 7 || x - value.x*i < 0 || x - value.x*i > 7){
 						break;
 					}
-					var p = $('tr').eq(y - value.y*i).children('td').eq(x - value.x*i);
+					var p = jQuery('tr').eq(y - value.y*i).children('td').eq(x - value.x*i);
 					if(p.hasClass(another_color) == false && p.hasClass(my_color) == false){
 						break;
 					}
@@ -82,18 +82,18 @@ function change(x,y,my_color,another_color){
 		{ x: 1,y: 1}
 		];
 	array.forEach(function(value) {
-		point = $('tr').eq(y + value.y).children('td').eq(x + value.x);
+		point = jQuery('tr').eq(y + value.y).children('td').eq(x + value.x);
 		for (var i=1; i<8; i++) {
 			if(y - value.y*i < 0 || y - value.y*i > 7 || x - value.x*i < 0 || x - value.x*i > 7){
 				break;
 			}
-			var p = $('tr').eq(y - value.y*i).children('td').eq(x - value.x*i);
+			var p = jQuery('tr').eq(y - value.y*i).children('td').eq(x - value.x*i);
 			if(p.hasClass(another_color) == false && p.hasClass(my_color) == false){
 				break;
 			}
 			if(p.hasClass(my_color)){
 				for(var j=1; j <= i; j++){
-					var p2 = $('tr').eq(y - value.y*j).children('td').eq(x - value.x*j);
+					var p2 = jQuery('tr').eq(y - value.y*j).children('td').eq(x - value.x*j);
 					p2.removeClass();
 					p2.addClass(my_color);
 				}
